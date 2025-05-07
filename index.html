@@ -1,177 +1,190 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>School AI Resource Hub</title>
-  <!-- Tailwind CSS via CDN for quick styling -->
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.0/dist/tailwind.min.css" rel="stylesheet" />
-  <!-- AOS for scroll animations -->
+
+  <!-- 👇 Tailwind via CDN (v3 – auto‐compiled in the browser) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    // Tailwind custom theme
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: { display: ['Inter', 'sans-serif'] },
+          colors: {
+            primary: '#6366f1',
+            secondary: '#ec4899',
+          },
+        },
+      },
+    };
+  </script>
+  <!-- AOS scroll-animation lib -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet" />
-  <style>
-    /* Custom theme */
-    .gradient-bg { background: linear-gradient(135deg, #6366f1, #ec4899); }
-    .text-gradient {
-      background: linear-gradient(90deg, #06b6d4, #3b82f6);
-      -webkit-background-clip: text;
-      color: transparent;
-    }
-    /* Feed styles */
-    #feed { display: flex; flex-direction: column; gap: 1.5rem; }
-    .feed-item:hover { transform: translateX(5px); transition: transform 0.2s ease; }
-    /* Use-case filter input */
-    #case-filter { border: 2px solid #e5e7eb; padding: 0.5rem; border-radius: 0.375rem; width: 100%; }
-    /* Dark mode toggle */
-    .dark-mode { background-color: #1f2937; color: #f9fafb; }
-    .dark-mode .card { background-color: #374151; }
-  </style>
 </head>
-<body class="bg-gray-50 text-gray-900 transition-colors duration-300">
-  <!-- Dark Mode Toggle -->
-  <button id="toggle-theme" class="fixed top-4 right-4 bg-white p-2 rounded-full shadow-lg hover:bg-gray-100 transition">
-    🌙
+<body class="bg-gray-50 text-gray-900 transition-colors duration-300 font-display">
+  <!-- ───────── Dark-mode toggle ───────── -->
+  <button id="toggleTheme" class="fixed z-50 top-4 right-4 p-2 rounded-full shadow-lg bg-white/80 backdrop-blur hover:bg-white">
+    <span id="themeIcon">🌙</span>
   </button>
 
-  <!-- HEADER / NAV -->
-  <header class="gradient-bg text-white sticky top-0 z-10 shadow-lg">
-    <nav class="container mx-auto flex items-center justify-between p-4">
-      <a href="#" class="text-2xl font-bold">AI Hub</a>
-      <ul class="flex gap-6">
+  <!-- ───────── NAVBAR ───────── -->
+  <header class="bg-gradient-to-r from-primary to-secondary text-white sticky top-0 shadow">
+    <nav class="container mx-auto flex flex-wrap items-center justify-between p-4">
+      <a href="#" class="text-2xl font-extrabold tracking-wide">AI Hub</a>
+      <button id="navToggle" class="md:hidden text-2xl">☰</button>
+      <ul id="navMenu" class="w-full md:w-auto hidden md:flex flex-col md:flex-row gap-4 md:gap-8 mt-4 md:mt-0 text-lg">
         <li><a href="#ai101" class="hover:underline">AI 101</a></li>
         <li><a href="#usecases" class="hover:underline">Use Cases</a></li>
         <li><a href="#tool" class="hover:underline">Tool of the Week</a></li>
-        <li><a href="#dropin" class="hover:underline">Book a Drop-In</a></li>
+        <li><a href="#dropin" class="hover:underline">Drop-In</a></li>
         <li><a href="#stories" class="hover:underline">Teacher Stories</a></li>
       </ul>
     </nav>
   </header>
 
-  <!-- MAIN -->
-  <main class="container mx-auto px-4 py-12">
-    <!-- Hero -->
-    <section id="hero" class="text-center mb-16" data-aos="fade-up">
-      <h1 class="text-5xl font-extrabold mb-4 text-gradient">Your AI-Powered Teaching, Elevated</h1>
-      <p class="text-lg text-gray-200">Discover tools, tricks, and a community feed—powered by generative AI.</p>
-    </section>
+  <!-- ───────── HERO ───────── -->
+  <section class="bg-gradient-to-br from-primary via-indigo-500 to-secondary text-white py-24 text-center" data-aos="fade-down">
+    <div class="container mx-auto px-4">
+      <h1 class="text-5xl md:text-6xl font-extrabold mb-4 drop-shadow-lg">Your AI-Powered Teaching Toolkit</h1>
+      <p class="text-xl md:text-2xl max-w-2xl mx-auto opacity-90">Curated resources, real-life workflows, and a community feed—built by teachers, for teachers.</p>
+    </div>
+  </section>
 
-    <!-- AI 101 -->
-    <section id="ai101" class="mb-20" data-aos="fade-right">
-      <h2 class="text-3xl font-bold mb-4">AI 101</h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div class="card bg-white p-6 rounded-2xl shadow hover:shadow-xl transition" data-aos="zoom-in">
-          <h3 class="font-semibold mb-2">Glossary</h3>
-          <p class="text-sm">Key AI terms explained in 2 lines or less.</p>
+  <main class="container mx-auto px-4 py-16 space-y-24">
+    <!-- ───────── AI 101 ───────── -->
+    <section id="ai101" data-aos="fade-up">
+      <h2 class="text-3xl font-bold mb-6">AI 101</h2>
+      <div class="grid gap-6 md:grid-cols-3">
+        <div class="bg-white p-6 rounded-2xl shadow hover:shadow-lg transition">
+          <h3 class="font-semibold text-primary mb-2">Glossary</h3>
+          <p>Quick definitions for buzz-words in under 25 words.</p>
         </div>
-        <div class="card bg-white p-6 rounded-2xl shadow hover:shadow-xl transition" data-aos="zoom-in" data-aos-delay="100">
-          <h3 class="font-semibold mb-2">Mythbusters</h3>
-          <p class="text-sm">5 common AI myths—debunked.</p>
+        <div class="bg-white p-6 rounded-2xl shadow hover:shadow-lg transition">
+          <h3 class="font-semibold text-primary mb-2">Myth-Busters</h3>
+          <p>We slice through the hype and clarify what generative AI can & can’t do.</p>
         </div>
-        <div class="card bg-white p-6 rounded-2xl shadow hover:shadow-xl transition" data-aos="zoom-in" data-aos-delay="200">
-          <h3 class="font-semibold mb-2">Resources</h3>
-          <p class="text-sm">Top tutorials, articles & videos.</p>
+        <div class="bg-white p-6 rounded-2xl shadow hover:shadow-lg transition">
+          <h3 class="font-semibold text-primary mb-2">Starter Playlist</h3>
+          <p>Hand-picked tutorials & case studies to watch on your prep period.</p>
         </div>
       </div>
     </section>
 
-    <!-- Use Case Library with Filter -->
-    <section id="usecases" class="mb-20" data-aos="fade-left">
-      <h2 class="text-3xl font-bold mb-4">Use Case Library</h2>
-      <input id="case-filter" type="text" placeholder="Filter by keyword..." />
-      <div id="cases" class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
-        <!-- Dynamically injected cards -->
+    <!-- ───────── USE-CASE LIBRARY ───────── -->
+    <section id="usecases" data-aos="fade-up">
+      <h2 class="text-3xl font-bold mb-6">Use Case Library</h2>
+      <input id="caseFilter" type="text" placeholder="Filter by keyword..." class="w-full mb-6 p-3 border rounded-lg" />
+      <div id="caseGrid" class="grid gap-6 md:grid-cols-2"></div>
+    </section>
+
+    <!-- ───────── TOOL OF THE WEEK ───────── -->
+    <section id="tool" data-aos="fade-up">
+      <h2 class="text-3xl font-bold mb-6">Tool of the Week</h2>
+      <div class="bg-white p-8 rounded-2xl shadow-lg flex flex-col md:flex-row gap-6 items-center">
+        <img src="https://placehold.co/140x140" alt="Tool icon" class="rounded-xl" />
+        <div>
+          <h3 class="text-2xl font-semibold mb-2">MagicSchool Quick-Grade</h3>
+          <p class="mb-4">Auto-generate rubric-aligned feedback and save an evening of grading.</p>
+          <a href="#" class="inline-block bg-primary text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition">See Demo →</a>
+        </div>
       </div>
     </section>
 
-    <!-- Tool of the Week -->
-    <section id="tool" class="mb-20" data-aos="fade-up">
-      <h2 class="text-3xl font-bold mb-4">Tool of the Week</h2>
-      <div class="card bg-white p-6 rounded-2xl shadow hover:shadow-xl transition" data-aos="flip-left">
-        <h3 class="font-semibold mb-2">MagicSchool.ai Quick-Grade</h3>
-        <p class="text-sm italic">Generate rubrics & feedback in seconds.</p>
-      </div>
+    <!-- ───────── DROP-IN ───────── -->
+    <section id="dropin" data-aos="fade-up">
+      <h2 class="text-3xl font-bold mb-6">Book a Drop-In Session</h2>
+      <iframe src="https://calendly.com/YOUR-USERNAME/ai-drop-in?hide_gdpr_banner=1" class="w-full h-[600px] border-0 rounded-2xl shadow-lg"></iframe>
     </section>
 
-    <!-- Book a Drop-In Session -->
-    <section id="dropin" class="mb-20" data-aos="fade-right">
-      <h2 class="text-3xl font-bold mb-4">Book a Drop-In Session</h2>
-      <iframe src="https://calendly.com/YOUR-USERNAME/ai-drop-in?hide_gdpr_banner=1" class="w-full h-[600px] border-0 rounded-xl shadow hover:shadow-xl transition"></iframe>
-    </section>
-
-    <!-- Teacher Stories (X-style Feed) -->
-    <section id="stories" class="mb-20" data-aos="fade-up">
-      <h2 class="text-3xl font-bold mb-4">Teacher Stories Feed</h2>
-      <p class="mb-6">How did AI boost your week? Share via <a href="https://forms.gle/" class="text-blue-600 underline">this form</a>.</p>
-      <div id="feed"></div>
+    <!-- ───────── TEACHER STORIES FEED ───────── -->
+    <section id="stories" data-aos="fade-up">
+      <h2 class="text-3xl font-bold mb-6">Teacher Stories</h2>
+      <p class="mb-4">Share your win via <a href="https://forms.gle/" class="text-primary underline">this form</a> and inspire colleagues.</p>
+      <div id="feed" class="space-y-6"></div>
     </section>
   </main>
 
-  <!-- FOOTER -->
-  <footer class="bg-gray-100 py-6" data-aos="fade-up">
-    <p class="text-center text-sm">&copy; <span id="year"></span> School AI Team · Built with ❤️ & GPT-4o</p>
+  <!-- ───────── FOOTER ───────── -->
+  <footer class="py-8 bg-gray-100 text-center text-sm" data-aos="fade-up">
+    <p>&copy; <span id="year"></span> School AI Team · Built with ❤ & GPT-4o</p>
   </footer>
 
-  <!-- Scripts -->
+  <!-- AOS script -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
   <script>
-    // Initialize AOS
     AOS.init({ duration: 800 });
 
-    // Footer year
+    // Set current year
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Dark mode toggle
-    const toggle = document.getElementById('toggle-theme');
-    toggle.addEventListener('click', () => {
-      document.body.classList.toggle('dark-mode');
-      localStorage.setItem('aiHubTheme', document.body.classList.contains('dark-mode') ? 'dark' : 'light');
-      toggle.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
+    // Mobile nav
+    const navToggle = document.getElementById('navToggle');
+    const navMenu   = document.getElementById('navMenu');
+    navToggle.addEventListener('click', () => navMenu.classList.toggle('hidden'));
+
+    // Dark-mode toggle
+    const btn  = document.getElementById('toggleTheme');
+    const icon = document.getElementById('themeIcon');
+    const root = document.documentElement;
+    btn.addEventListener('click', () => {
+      root.classList.toggle('dark');
+      const dark = root.classList.contains('dark');
+      icon.textContent = dark ? '☀️' : '🌙';
+      localStorage.setItem('aiHubTheme', dark ? 'dark' : 'light');
     });
-    // Persist theme
     if (localStorage.getItem('aiHubTheme') === 'dark') {
-      document.body.classList.add('dark-mode');
-      toggle.textContent = '☀️';
+      root.classList.add('dark');
+      icon.textContent = '☀️';
     }
 
-    // Stories feed loader
-    async function loadStories() {
-      const res = await fetch('/stories.json');
-      const data = await res.json();
-      const feed = document.getElementById('feed');
-      data.forEach(story => {
-        const el = document.createElement('div');
-        el.className = 'feed-item card p-4 rounded-2xl shadow mb-4 hover:shadow-lg transition';
-        el.innerHTML = `
-          <strong>@${story.author}</strong> • <span class="text-xs text-gray-500">${new Date(story.date).toLocaleDateString()}</span>
-          <p class="mt-2">${story.content}</p>
-        `;
-        feed.prepend(el);
-      });
+    // Load use-cases (static JSON file in repo)
+    async function loadCases() {
+      try {
+        const res = await fetch('usecases.json');
+        const cases = await res.json();
+        const grid  = document.getElementById('caseGrid');
+        cases.forEach(c => grid.insertAdjacentHTML('beforeend', makeCaseCard(c)));
+      } catch (err) { console.error('usecases.json missing', err); }
     }
-    document.addEventListener('DOMContentLoaded', () => {
-      loadStories();
-      loadUseCases();
+    function makeCaseCard(c) {
+      return `<article class="bg-white p-6 rounded-2xl shadow hover:shadow-lg transition" data-keywords="${c.keywords.join(' ')}">
+        <h3 class="font-semibold text-primary mb-1">${c.title}</h3>
+        <p>${c.description}</p>
+      </article>`;
+    }
+
+    // Filter logic
+    document.getElementById('caseFilter').addEventListener('input', e => {
+      const term = e.target.value.toLowerCase();
+      document.querySelectorAll('#caseGrid [data-keywords]').forEach(card => {
+        card.style.display = card.dataset.keywords.includes(term) ? 'block' : 'none';
+      });
     });
 
-    // Use case loader + filter
-    async function loadUseCases() {
-      const res = await fetch('/usecases.json');
-      const data = await res.json();
-      const container = document.getElementById('cases');
-      data.forEach(c => createCaseCard(c, container));
+    // Load teacher stories
+    async function loadStories() {
+      try {
+        const res = await fetch('stories.json');
+        const stories = await res.json();
+        const feed = document.getElementById('feed');
+        stories.sort((a,b) => new Date(b.date) - new Date(a.date));
+        stories.forEach(s => feed.insertAdjacentHTML('beforeend', makeStory(s)));
+      } catch (err) { console.error('stories.json missing', err); }
     }
-    function createCaseCard(c, parent) {
-      const card = document.createElement('div');
-      card.className = 'card bg-white p-4 rounded-2xl shadow hover:shadow-lg transition';
-      card.setAttribute('data-keywords', c.keywords.join(' '));
-      card.innerHTML = `<h3 class="font-semibold mb-1">${c.title}</h3><p class="text-sm">${c.description}</p>`;
-      parent.appendChild(card);
+    function makeStory(s) {
+      return `<article class="bg-white p-6 rounded-2xl shadow hover:shadow-lg transition">
+        <header class="flex items-center gap-2 mb-2"><span class="font-semibold">@${s.author}</span><span class="text-xs text-gray-500">${new Date(s.date).toLocaleDateString()}</span></header>
+        <p>${s.content}</p>
+      </article>`;
     }
-    document.getElementById('case-filter').addEventListener('input', e => {
-      const term = e.target.value.toLowerCase();
-      document.querySelectorAll('#cases .card').forEach(card => {
-        const text = card.getAttribute('data-keywords');
-        card.style.display = text.includes(term) ? 'block' : 'none';
-      });
+
+    document.addEventListener('DOMContentLoaded', () => {
+      loadCases();
+      loadStories();
     });
   </script>
 </body>
