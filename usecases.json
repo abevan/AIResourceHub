@@ -13,7 +13,7 @@
   {
     "title": "Exit Tickets Generator",
     "description": "Create quick formative assessment prompts based on today's lesson.",
-    "keywords": ["assessment", "formative", "exit tickets"]
+    "keywords": ["assessment", "exit tickets", "formative"]
   },
   {
     "title": "Parent Newsletter Writer",
@@ -23,6 +23,6 @@
   {
     "title": "Substitute Plans",
     "description": "Generate no-prep sub lesson plans for any subject and grade level.",
-    "keywords": ["sub plans", "substitute", "lesson"]
+    "keywords": ["sub plans", "lesson", "substitute"]
   }
 ]
