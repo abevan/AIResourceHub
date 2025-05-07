@@ -6,6 +6,23 @@
   <title>School AI Resource Hub</title>
   <!-- Tailwind CSS via CDN for quick styling -->
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.0/dist/tailwind.min.css" rel="stylesheet" />
+  <!-- Custom CSS -->
+  <style>
+    /* Feed styles */
+    #feed {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    .feed-item {
+      border-bottom: 1px solid #e5e7eb;
+      padding-bottom: 1rem;
+    }
+    .feed-item:hover {
+      transform: translateX(5px);
+      transition: transform 0.2s ease;
+    }
+  </style>
 </head>
 <body class="bg-gray-50 text-gray-900">
   <!-- ===================== HEADER / NAV ===================== -->
@@ -49,7 +66,7 @@
     <!-- Tool of the Week -->
     <section id="tool" class="mb-20">
       <h2 class="text-2xl font-bold mb-4">Tool of the Week</h2>
-      <div class="bg-white p-6 rounded-2xl shadow">
+      <div class="bg-white p-6 rounded-2xl shadow hover:shadow-lg transition-shadow">
         <!-- Embed GIF, screenshot, or quick guide -->
         <p class="italic">Coming soon: spotlight on MagicSchool.ai quick‑grade feature.</p>
       </div>
@@ -62,16 +79,12 @@
       <iframe src="https://calendly.com/YOUR-USERNAME/ai-drop-in?hide_gdpr_banner=1" class="w-full h-[800px] border-0 rounded-xl shadow"></iframe>
     </section>
 
-    <!-- Teacher Stories -->
+    <!-- Teacher Stories (Feed) -->
     <section id="stories" class="mb-20">
       <h2 class="text-2xl font-bold mb-4">Teacher Stories</h2>
       <p class="mb-6">Share how you used AI this week – submit via <a href="https://forms.gle/" class="text-blue-600 underline">this quick form</a>.</p>
-      <div class="grid gap-6 md:grid-cols-2">
-        <!-- Placeholder card -->
-        <article class="bg-white p-4 rounded-2xl shadow">
-          <h3 class="font-semibold">Example Story</h3>
-          <p class="text-sm">Ms. Lopez used ChatGPT to draft differentiated discussion questions for her 8th‑grade US History lesson.</p>
-        </article>
+      <div id="feed">
+        <!-- Stories will load here dynamically -->
       </div>
     </section>
   </main>
@@ -80,8 +93,34 @@
   <footer class="bg-gray-100 py-6">
     <p class="text-center text-sm">&copy; <span id="year"></span> Your School AI Team · Built with ❤️ & GPT‑4o</p>
   </footer>
+
+  <!-- Scripts -->
   <script>
+    // Update footer year
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Teacher stories feed loader
+    async function loadStories() {
+      try {
+        const res = await fetch('/stories.json');
+        const data = await res.json();
+        const feed = document.getElementById('feed');
+        data.forEach(story => {
+          const article = document.createElement('article');
+          article.className = 'feed-item bg-white p-4 rounded-2xl shadow';
+          article.innerHTML = `
+            <h3 class="font-semibold">${story.title}</h3>
+            <p class="text-sm mt-2">${story.content}</p>
+            <p class="text-xs text-gray-500 mt-2">\${new Date(story.date).toLocaleDateString()}</p>
+          `;
+          feed.appendChild(article);
+        });
+      } catch (e) {
+        console.error('Error loading stories', e);
+      }
+    }
+    document.addEventListener('DOMContentLoaded', loadStories);
   </script>
 </body>
 </html>
+
