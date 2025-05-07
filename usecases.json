@@ -1,0 +1,28 @@
+// usecases.json
+[
+  {
+    "title": "Differentiated Reading Passages",
+    "description": "Generate leveled texts on the same topic for mixed-ability groups.",
+    "keywords": ["reading", "differentiation", "ELA"]
+  },
+  {
+    "title": "Auto-Rubric Grading",
+    "description": "Feed student essays and get back rubric-aligned feedback suggestions.",
+    "keywords": ["grading", "rubric", "feedback"]
+  },
+  {
+    "title": "Exit Tickets Generator",
+    "description": "Create quick formative assessment prompts based on today's lesson.",
+    "keywords": ["assessment", "formative", "exit tickets"]
+  },
+  {
+    "title": "Parent Newsletter Writer",
+    "description": "Auto-draft a weekly parent newsletter from bullet-point highlights.",
+    "keywords": ["communications", "newsletter", "parents"]
+  },
+  {
+    "title": "Substitute Plans",
+    "description": "Generate no-prep sub lesson plans for any subject and grade level.",
+    "keywords": ["sub plans", "substitute", "lesson"]
+  }
+]
