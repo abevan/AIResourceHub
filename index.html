@@ -5,10 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>School AI Resource Hub</title>
 
-  <!-- 👇 Tailwind via CDN (v3 – auto‐compiled in the browser) -->
+  <!-- Tailwind via CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
-    // Tailwind custom theme
     tailwind.config = {
       darkMode: 'class',
       theme: {
@@ -20,28 +19,28 @@
           },
         },
       },
-    };
+    }
   </script>
-  <!-- AOS scroll-animation lib -->
+  <!-- AOS scroll animation -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet" />
 </head>
-<body class="bg-gray-50 text-gray-900 transition-colors duration-300 font-display">
-  <!-- ───────── Dark-mode toggle ───────── -->
-  <button id="toggleTheme" class="fixed z-50 top-4 right-4 p-2 rounded-full shadow-lg bg-white/80 backdrop-blur hover:bg-white">
+<body class="bg-gray-50 text-gray-900 font-display transition-colors duration-300">
+  <!-- ───────── DARK-MODE TOGGLE ───────── -->
+  <button id="toggleTheme" class="fixed top-4 right-4 z-50 p-2 rounded-full bg-white/80 backdrop-blur shadow-lg hover:bg-white">
     <span id="themeIcon">🌙</span>
   </button>
 
   <!-- ───────── NAVBAR ───────── -->
-  <header class="bg-gradient-to-r from-primary to-secondary text-white sticky top-0 shadow">
+  <header class="bg-gradient-to-r from-primary to-secondary text-white sticky top-0 shadow-lg">
     <nav class="container mx-auto flex flex-wrap items-center justify-between p-4">
       <a href="#" class="text-2xl font-extrabold tracking-wide">AI Hub</a>
-      <button id="navToggle" class="md:hidden text-2xl">☰</button>
-      <ul id="navMenu" class="w-full md:w-auto hidden md:flex flex-col md:flex-row gap-4 md:gap-8 mt-4 md:mt-0 text-lg">
-        <li><a href="#ai101" class="hover:underline">AI 101</a></li>
-        <li><a href="#usecases" class="hover:underline">Use Cases</a></li>
-        <li><a href="#tool" class="hover:underline">Tool of the Week</a></li>
-        <li><a href="#dropin" class="hover:underline">Drop-In</a></li>
-        <li><a href="#stories" class="hover:underline">Teacher Stories</a></li>
+      <button id="navToggle" class="md:hidden text-2xl focus:outline-none">☰</button>
+      <ul id="navMenu" class="hidden md:flex flex-col md:flex-row gap-4 md:gap-8 w-full md:w-auto mt-4 md:mt-0 text-lg">
+        <li><a href="#ai101" class="block py-2 md:py-0 hover:underline">AI 101</a></li>
+        <li><a href="#usecases" class="block py-2 md:py-0 hover:underline">Use Cases</a></li>
+        <li><a href="#tool" class="block py-2 md:py-0 hover:underline">Tool of the Week</a></li>
+        <li><a href="#dropin" class="block py-2 md:py-0 hover:underline">Drop-In</a></li>
+        <li><a href="#stories" class="block py-2 md:py-0 hover:underline">Teacher Stories</a></li>
       </ul>
     </nav>
   </header>
@@ -49,13 +48,13 @@
   <!-- ───────── HERO ───────── -->
   <section class="bg-gradient-to-br from-primary via-indigo-500 to-secondary text-white py-24 text-center" data-aos="fade-down">
     <div class="container mx-auto px-4">
-      <h1 class="text-5xl md:text-6xl font-extrabold mb-4 drop-shadow-lg">Your AI-Powered Teaching Toolkit</h1>
-      <p class="text-xl md:text-2xl max-w-2xl mx-auto opacity-90">Curated resources, real-life workflows, and a community feed—built by teachers, for teachers.</p>
+      <h1 class="text-5xl md:text-6xl font-extrabold drop-shadow mb-4">Your AI-Powered Teaching Toolkit</h1>
+      <p class="text-xl md:text-2xl max-w-2xl mx-auto opacity-90">Curated resources, actionable workflows, and a community feed—by teachers, for teachers.</p>
     </div>
   </section>
 
   <main class="container mx-auto px-4 py-16 space-y-24">
-    <!-- ───────── AI 101 ───────── -->
+    <!-- AI 101 -->
     <section id="ai101" data-aos="fade-up">
       <h2 class="text-3xl font-bold mb-6">AI 101</h2>
       <div class="grid gap-6 md:grid-cols-3">
@@ -69,95 +68,102 @@
         </div>
         <div class="bg-white p-6 rounded-2xl shadow hover:shadow-lg transition">
           <h3 class="font-semibold text-primary mb-2">Starter Playlist</h3>
-          <p>Hand-picked tutorials & case studies to watch on your prep period.</p>
+          <p>Hand-picked tutorials & case studies to watch during prep.</p>
         </div>
       </div>
     </section>
 
-    <!-- ───────── USE-CASE LIBRARY ───────── -->
+    <!-- USE CASE LIBRARY -->
     <section id="usecases" data-aos="fade-up">
       <h2 class="text-3xl font-bold mb-6">Use Case Library</h2>
-      <input id="caseFilter" type="text" placeholder="Filter by keyword..." class="w-full mb-6 p-3 border rounded-lg" />
+      <input id="caseFilter" type="text" placeholder="Filter by keyword…" class="w-full mb-6 p-3 border rounded-lg" />
       <div id="caseGrid" class="grid gap-6 md:grid-cols-2"></div>
     </section>
 
-    <!-- ───────── TOOL OF THE WEEK ───────── -->
+    <!-- TOOL OF THE WEEK -->
     <section id="tool" data-aos="fade-up">
       <h2 class="text-3xl font-bold mb-6">Tool of the Week</h2>
       <div class="bg-white p-8 rounded-2xl shadow-lg flex flex-col md:flex-row gap-6 items-center">
         <img src="https://placehold.co/140x140" alt="Tool icon" class="rounded-xl" />
         <div>
           <h3 class="text-2xl font-semibold mb-2">MagicSchool Quick-Grade</h3>
-          <p class="mb-4">Auto-generate rubric-aligned feedback and save an evening of grading.</p>
+          <p class="mb-4">Auto-generate rubric-aligned feedback and reclaim your weekend.</p>
           <a href="#" class="inline-block bg-primary text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition">See Demo →</a>
         </div>
       </div>
     </section>
 
-    <!-- ───────── DROP-IN ───────── -->
+    <!-- DROP-IN -->
     <section id="dropin" data-aos="fade-up">
       <h2 class="text-3xl font-bold mb-6">Book a Drop-In Session</h2>
-      <iframe src="https://calendly.com/YOUR-USERNAME/ai-drop-in?hide_gdpr_banner=1" class="w-full h-[600px] border-0 rounded-2xl shadow-lg"></iframe>
+      <iframe src="https://calendly.com/aaronbevan-iew/ai-meeting?hide_gdpr_banner=1" class="w-full h-[600px] border-0 rounded-2xl shadow-lg"></iframe>
     </section>
 
-    <!-- ───────── TEACHER STORIES FEED ───────── -->
+    <!-- TEACHER STORIES -->
     <section id="stories" data-aos="fade-up">
       <h2 class="text-3xl font-bold mb-6">Teacher Stories</h2>
-      <p class="mb-4">Share your win via <a href="https://forms.gle/" class="text-primary underline">this form</a> and inspire colleagues.</p>
+
+      <!-- Post composer -->
+      <div class="bg-white p-6 rounded-2xl shadow mb-8" id="composer">
+        <textarea id="storyInput" rows="3" placeholder="How did you use AI this week?" class="w-full p-3 border rounded-lg resize-none"></textarea>
+        <input id="tagInput" type="text" placeholder="Tags (comma-separated)" class="w-full p-3 mt-3 border rounded-lg" />
+        <button id="postBtn" class="mt-4 bg-primary text-white px-6 py-2 rounded-lg hover:bg-indigo-700 transition">Post</button>
+      </div>
+
+      <!-- Feed -->
       <div id="feed" class="space-y-6"></div>
     </section>
   </main>
 
-  <!-- ───────── FOOTER ───────── -->
+  <!-- FOOTER -->
   <footer class="py-8 bg-gray-100 text-center text-sm" data-aos="fade-up">
     <p>&copy; <span id="year"></span> School AI Team · Built with ❤ & GPT-4o</p>
   </footer>
 
-  <!-- AOS script -->
+  <!-- Scripts -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
   <script>
+    /* ───────────────── AOS ───────────────── */
     AOS.init({ duration: 800 });
 
-    // Set current year
+    /* ───────────────── Footer Year ───────────────── */
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Mobile nav
+    /* ───────────────── Mobile Nav ───────────────── */
     const navToggle = document.getElementById('navToggle');
     const navMenu   = document.getElementById('navMenu');
     navToggle.addEventListener('click', () => navMenu.classList.toggle('hidden'));
+    // Hide menu on link click & on scroll
+    navMenu.querySelectorAll('a').forEach(link => link.addEventListener('click', () => navMenu.classList.add('hidden')));
+    window.addEventListener('scroll', () => navMenu.classList.add('hidden'));
 
-    // Dark-mode toggle
-    const btn  = document.getElementById('toggleTheme');
-    const icon = document.getElementById('themeIcon');
-    const root = document.documentElement;
-    btn.addEventListener('click', () => {
-      root.classList.toggle('dark');
-      const dark = root.classList.contains('dark');
-      icon.textContent = dark ? '☀️' : '🌙';
+    /* ───────────────── Dark Mode ───────────────── */
+    const themeBtn  = document.getElementById('toggleTheme');
+    const themeIcon = document.getElementById('themeIcon');
+    const root      = document.documentElement;
+    function setTheme(dark) {
+      dark ? root.classList.add('dark') : root.classList.remove('dark');
+      themeIcon.textContent = dark ? '☀️' : '🌙';
       localStorage.setItem('aiHubTheme', dark ? 'dark' : 'light');
-    });
-    if (localStorage.getItem('aiHubTheme') === 'dark') {
-      root.classList.add('dark');
-      icon.textContent = '☀️';
     }
+    themeBtn.addEventListener('click', () => setTheme(!root.classList.contains('dark')));
+    setTheme(localStorage.getItem('aiHubTheme') === 'dark');
 
-    // Load use-cases (static JSON file in repo)
+    /* ───────────────── Use-Cases ───────────────── */
     async function loadCases() {
       try {
         const res = await fetch('usecases.json');
         const cases = await res.json();
         const grid  = document.getElementById('caseGrid');
-        cases.forEach(c => grid.insertAdjacentHTML('beforeend', makeCaseCard(c)));
-      } catch (err) { console.error('usecases.json missing', err); }
+        cases.forEach(c => grid.insertAdjacentHTML('beforeend', caseCard(c)));
+      } catch (err) { console.error('Missing usecases.json', err); }
     }
-    function makeCaseCard(c) {
+    function caseCard(c) {
       return `<article class="bg-white p-6 rounded-2xl shadow hover:shadow-lg transition" data-keywords="${c.keywords.join(' ')}">
         <h3 class="font-semibold text-primary mb-1">${c.title}</h3>
         <p>${c.description}</p>
       </article>`;
     }
-
-    // Filter logic
     document.getElementById('caseFilter').addEventListener('input', e => {
       const term = e.target.value.toLowerCase();
       document.querySelectorAll('#caseGrid [data-keywords]').forEach(card => {
@@ -165,23 +171,50 @@
       });
     });
 
-    // Load teacher stories
+    /* ───────────────── Stories ───────────────── */
     async function loadStories() {
       try {
         const res = await fetch('stories.json');
         const stories = await res.json();
-        const feed = document.getElementById('feed');
-        stories.sort((a,b) => new Date(b.date) - new Date(a.date));
-        stories.forEach(s => feed.insertAdjacentHTML('beforeend', makeStory(s)));
-      } catch (err) { console.error('stories.json missing', err); }
+        const local  = JSON.parse(localStorage.getItem('userStories') || '[]');
+        renderStories([...stories, ...local]);
+      } catch (err) { console.error('Missing stories.json', err); renderStories(JSON.parse(localStorage.getItem('userStories') || '[]')); }
     }
-    function makeStory(s) {
+    function renderStories(arr) {
+      const feed = document.getElementById('feed');
+      feed.innerHTML = '';
+      arr.sort((a,b) => new Date(b.date) - new Date(a.date));
+      arr.forEach(s => feed.insertAdjacentHTML('beforeend', storyCard(s)));
+    }
+    function storyCard(s) {
+      const tagHtml = s.tags ? s.tags.map(t => `<span class="text-xs bg-gray-200 rounded px-2 py-0.5">#${t}</span>`).join(' ') : '';
       return `<article class="bg-white p-6 rounded-2xl shadow hover:shadow-lg transition">
-        <header class="flex items-center gap-2 mb-2"><span class="font-semibold">@${s.author}</span><span class="text-xs text-gray-500">${new Date(s.date).toLocaleDateString()}</span></header>
-        <p>${s.content}</p>
+        <header class="flex items-center gap-2 mb-2"><span class="font-semibold">@${s.author || 'Anon'}</span><span class="text-xs text-gray-500">${new Date(s.date).toLocaleDateString()}</span></header>
+        <p class="mb-2">${s.content}</p>
+        <div class="flex gap-2 flex-wrap">${tagHtml}</div>
       </article>`;
     }
 
+    // Post new story
+    document.getElementById('postBtn').addEventListener('click', () => {
+      const content = document.getElementById('storyInput').value.trim();
+      if (!content) return alert('Tell us your AI win first!');
+      const tagsRaw = document.getElementById('tagInput').value.trim();
+      const story = {
+        author: 'You',
+        date: new Date().toISOString(),
+        content,
+        tags: tagsRaw ? tagsRaw.split(',').map(t => t.trim()).filter(Boolean) : []
+      };
+      const stored = JSON.parse(localStorage.getItem('userStories') || '[]');
+      stored.push(story);
+      localStorage.setItem('userStories', JSON.stringify(stored));
+      document.getElementById('storyInput').value = '';
+      document.getElementById('tagInput').value = '';
+      renderStories([...stored]);
+    });
+
+    /* ───────────────── Init ───────────────── */
     document.addEventListener('DOMContentLoaded', () => {
       loadCases();
       loadStories();
