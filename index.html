@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>School AI Resource Hub</title>
+  <!-- Tailwind CSS via CDN for quick styling -->
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.0/dist/tailwind.min.css" rel="stylesheet" />
+</head>
+<body class="bg-gray-50 text-gray-900">
+  <!-- ===================== HEADER / NAV ===================== -->
+  <header class="bg-white shadow sticky top-0 z-10">
+    <nav class="container mx-auto flex items-center justify-between p-4">
+      <a href="#" class="text-xl font-bold">AI Hub</a>
+      <ul class="flex gap-6">
+        <li><a href="#ai101" class="hover:text-blue-600">AI 101</a></li>
+        <li><a href="#usecases" class="hover:text-blue-600">Use Cases</a></li>
+        <li><a href="#tool" class="hover:text-blue-600">Tool of the Week</a></li>
+        <li><a href="#dropin" class="hover:text-blue-600">Book a Drop‑In</a></li>
+        <li><a href="#stories" class="hover:text-blue-600">Teacher Stories</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- ===================== MAIN ===================== -->
+  <main class="container mx-auto px-4 py-12">
+    <!-- Hero -->
+    <section id="hero" class="text-center mb-16">
+      <h1 class="text-4xl font-extrabold mb-4">Welcome to the School AI Resource Hub</h1>
+      <p class="text-lg">Explore, experiment, and evolve your teaching with generative AI.</p>
+    </section>
+
+    <!-- AI 101 -->
+    <section id="ai101" class="mb-20">
+      <h2 class="text-2xl font-bold mb-4">AI 101</h2>
+      <p class="mb-6">🚧 Content coming soon: short videos, key terms, and vetted external links.</p>
+    </section>
+
+    <!-- Use Case Library -->
+    <section id="usecases" class="mb-20">
+      <h2 class="text-2xl font-bold mb-4">Use Case Library</h2>
+      <p class="mb-6">💡 Browse practical classroom & admin workflows.</p>
+      <ul class="list-disc pl-6 space-y-2">
+        <!-- Example placeholder -->
+        <li><strong>Differentiated Reading Passages</strong> – Generate leveled texts on the same topic for mixed‑ability groups.</li>
+      </ul>
+    </section>
+
+    <!-- Tool of the Week -->
+    <section id="tool" class="mb-20">
+      <h2 class="text-2xl font-bold mb-4">Tool of the Week</h2>
+      <div class="bg-white p-6 rounded-2xl shadow">
+        <!-- Embed GIF, screenshot, or quick guide -->
+        <p class="italic">Coming soon: spotlight on MagicSchool.ai quick‑grade feature.</p>
+      </div>
+    </section>
+
+    <!-- Book a Drop‑In Session -->
+    <section id="dropin" class="mb-20">
+      <h2 class="text-2xl font-bold mb-4">Book a Drop‑In Session</h2>
+      <!-- Replace with your Calendly embed URL -->
+      <iframe src="https://calendly.com/YOUR-USERNAME/ai-drop-in?hide_gdpr_banner=1" class="w-full h-[800px] border-0 rounded-xl shadow"></iframe>
+    </section>
+
+    <!-- Teacher Stories -->
+    <section id="stories" class="mb-20">
+      <h2 class="text-2xl font-bold mb-4">Teacher Stories</h2>
+      <p class="mb-6">Share how you used AI this week – submit via <a href="https://forms.gle/" class="text-blue-600 underline">this quick form</a>.</p>
+      <div class="grid gap-6 md:grid-cols-2">
+        <!-- Placeholder card -->
+        <article class="bg-white p-4 rounded-2xl shadow">
+          <h3 class="font-semibold">Example Story</h3>
+          <p class="text-sm">Ms. Lopez used ChatGPT to draft differentiated discussion questions for her 8th‑grade US History lesson.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="bg-gray-100 py-6">
+    <p class="text-center text-sm">&copy; <span id="year"></span> Your School AI Team · Built with ❤️ & GPT‑4o</p>
+  </footer>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
