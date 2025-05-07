@@ -1,0 +1,18 @@
+// stories.json
+[
+  {
+    "author": "Lopez",
+    "date": "2025-05-06T14:23:00Z",
+    "content": "I used AI to create three differentiated math problem sets in under five minutes—and my students loved choosing their challenge level!"
+  },
+  {
+    "author": "Nguyen",
+    "date": "2025-05-05T09:45:00Z",
+    "content": "ChatGPT helped rewrite my class syllabus into student-friendly language—fewer questions at open house!"
+  },
+  {
+    "author": "Patel",
+    "date": "2025-05-04T16:10:00Z",
+    "content": "Generated behavior-management scripts for restorative circles—felt more consistent and supportive."
+  }
+]
