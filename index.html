@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>School AI Resource Hub</title>
+  <title>Buffalo AI Hub</title>
 
   <!-- Tailwind via CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -13,70 +13,80 @@
       theme: {
         extend: {
           fontFamily: { display: ['Inter', 'sans-serif'] },
-          colors: {
-            primary: '#6366f1',
-            secondary: '#ec4899',
-          },
-        },
-      },
-    }
+          colors: { primary: '#6366f1', secondary: '#ec4899' }
+        }
+      }
+    };
   </script>
-  <!-- AOS scroll animation -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet" />
+  <style>
+    ::placeholder { font-size: .875rem; color: theme('colors.gray.400'); }
+    /* Modal backdrop */
+    #emailModal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 50; align-items: center; justify-content: center; }
+  </style>
 </head>
 <body class="bg-gray-50 text-gray-900 font-display transition-colors duration-300">
-  <!-- ───────── DARK-MODE TOGGLE ───────── -->
+
+  <!-- Email modal -->
+  <div id="emailModal" class="flex">
+    <div class="bg-white p-8 rounded-2xl shadow-lg w-11/12 max-w-md">
+      <h2 class="text-xl font-bold mb-4">Stay Updated!</h2>
+      <p class="mb-4">Enter your email to get notified when new AI tools are added.</p>
+      <input id="emailInput" type="email" placeholder="you@example.com" class="w-full p-3 border rounded-lg mb-4" />
+      <div class="flex justify-end gap-4">
+        <button id="noThanksBtn" class="px-4 py-2">No thanks</button>
+        <button id="submitEmailBtn" class="bg-primary text-white px-4 py-2 rounded-lg">Submit</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- DARK MODE TOGGLE -->
   <button id="toggleTheme" class="fixed top-4 right-4 z-50 p-2 rounded-full bg-white/80 backdrop-blur shadow-lg hover:bg-white">
     <span id="themeIcon">🌙</span>
   </button>
 
-  <!-- ───────── NAVBAR ───────── -->
-  <header class="bg-gradient-to-r from-primary to-secondary text-white sticky top-0 shadow-lg">
-    <nav class="container mx-auto flex flex-wrap items-center justify-between p-4">
-      <a href="#" class="text-2xl font-extrabold tracking-wide">AI Hub</a>
+  <!-- NAVBAR -->
+  <header class="bg-gradient-to-r from-primary to-secondary text-white sticky top-0 shadow-lg z-40">
+    <nav class="container mx-auto flex items-center justify-between p-4">
       <button id="navToggle" class="md:hidden text-2xl focus:outline-none">☰</button>
-      <ul id="navMenu" class="hidden md:flex flex-col md:flex-row gap-4 md:gap-8 w-full md:w-auto mt-4 md:mt-0 text-lg">
-        <li><a href="#ai101" class="block py-2 md:py-0 hover:underline">AI 101</a></li>
-        <li><a href="#usecases" class="block py-2 md:py-0 hover:underline">Use Cases</a></li>
-        <li><a href="#tool" class="block py-2 md:py-0 hover:underline">Tool of the Week</a></li>
-        <li><a href="#dropin" class="block py-2 md:py-0 hover:underline">Drop-In</a></li>
-        <li><a href="#stories" class="block py-2 md:py-0 hover:underline">Teacher Stories</a></li>
+      <a href="index.html" class="text-2xl font-extrabold tracking-wide">Buffalo AI Hub</a>
+      <ul id="navMenu" class="hidden md:flex gap-6 text-lg">
+        <li><a href="glossary.html" class="hover:underline">Glossary</a></li>
+        <li><a href="mythbusters.html" class="hover:underline">Myth‑Busters</a></li>
+        <li><a href="#usecases" class="hover:underline">Use Cases</a></li>
+        <li><a href="#tool" class="hover:underline">Tool of the Week</a></li>
       </ul>
     </nav>
   </header>
 
-  <!-- ───────── HERO ───────── -->
+  <!-- HERO -->
   <section class="bg-gradient-to-br from-primary via-indigo-500 to-secondary text-white py-24 text-center" data-aos="fade-down">
-    <div class="container mx-auto px-4">
-      <h1 class="text-5xl md:text-6xl font-extrabold drop-shadow mb-4">Your AI-Powered Teaching Toolkit</h1>
-      <p class="text-xl md:text-2xl max-w-2xl mx-auto opacity-90">Curated resources, actionable workflows, and a community feed—by teachers, for teachers.</p>
-    </div>
+    <h1 class="text-5xl md:text-6xl font-extrabold drop-shadow mb-4">Empower Your Teaching with AI</h1>
+    <p class="text-xl md:text-2xl max-w-2xl mx-auto opacity-90">Curated resources, ready‑to‑use workflows, and a creative teacher feed—by teachers, for teachers.</p>
   </section>
 
+  <!-- MAIN CONTENT -->
   <main class="container mx-auto px-4 py-16 space-y-24">
-    <!-- AI 101 -->
-    <section id="ai101" data-aos="fade-up">
-      <h2 class="text-3xl font-bold mb-6">AI 101</h2>
-      <div class="grid gap-6 md:grid-cols-3">
-        <div class="bg-white p-6 rounded-2xl shadow hover:shadow-lg transition">
-          <h3 class="font-semibold text-primary mb-2">Glossary</h3>
-          <p>Quick definitions for buzz-words in under 25 words.</p>
-        </div>
-        <div class="bg-white p-6 rounded-2xl shadow hover:shadow-lg transition">
-          <h3 class="font-semibold text-primary mb-2">Myth-Busters</h3>
-          <p>We slice through the hype and clarify what generative AI can & can’t do.</p>
-        </div>
-        <div class="bg-white p-6 rounded-2xl shadow hover:shadow-lg transition">
-          <h3 class="font-semibold text-primary mb-2">Starter Playlist</h3>
-          <p>Hand-picked tutorials & case studies to watch during prep.</p>
-        </div>
-      </div>
+    <!-- AI 101 OVERVIEW -->
+    <section id="ai101" class="grid gap-6 md:grid-cols-3" data-aos="fade-up">
+      <a href="glossary.html" class="bg-white p-6 rounded-2xl shadow hover:shadow-lg transition">
+        <h3 class="font-semibold text-primary mb-2">Glossary</h3>
+        <p>Explore the top 50 AI terms in detail.</p>
+      </a>
+      <a href="mythbusters.html" class="bg-white p-6 rounded-2xl shadow hover:shadow-lg transition">
+        <h3 class="font-semibold text-primary mb-2">Myth‑Busters</h3>
+        <p>Get the facts on common AI misconceptions.</p>
+      </a>
+      <a href="#" class="bg-white p-6 rounded-2xl shadow hover:shadow-lg transition">
+        <h3 class="font-semibold text-primary mb-2">Starter Playlist</h3>
+        <p>Short tutorials & case studies to watch during prep.</p>
+      </a>
     </section>
 
     <!-- USE CASE LIBRARY -->
     <section id="usecases" data-aos="fade-up">
       <h2 class="text-3xl font-bold mb-6">Use Case Library</h2>
-      <input id="caseFilter" type="text" placeholder="Filter by keyword…" class="w-full mb-6 p-3 border rounded-lg" />
+      <input id="caseFilter" type="text" placeholder="Filter by keyword…" class="w-full p-3 mb-6 border rounded-lg" />
       <div id="caseGrid" class="grid gap-6 md:grid-cols-2"></div>
     </section>
 
@@ -86,83 +96,101 @@
       <div class="bg-white p-8 rounded-2xl shadow-lg flex flex-col md:flex-row gap-6 items-center">
         <img src="https://placehold.co/140x140" alt="Tool icon" class="rounded-xl" />
         <div>
-          <h3 class="text-2xl font-semibold mb-2">MagicSchool Quick-Grade</h3>
-          <p class="mb-4">Auto-generate rubric-aligned feedback and reclaim your weekend.</p>
-          <a href="#" class="inline-block bg-primary text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition">See Demo →</a>
+          <h3 class="text-2xl font-semibold mb-2">MagicSchool Quick‑Grade</h3>
+          <p class="mb-4">Generate rubric‑aligned feedback in seconds.</p>
+          <a href="#" class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition">See Demo →</a>
         </div>
       </div>
     </section>
 
-    <!-- DROP-IN -->
-    <section id="dropin" data-aos="fade-up">
-      <h2 class="text-3xl font-bold mb-6">Book a Drop-In Session</h2>
-      <iframe src="https://calendly.com/aaronbevan-iew/ai-meeting?hide_gdpr_banner=1" class="w-full h-[600px] border-0 rounded-2xl shadow-lg"></iframe>
-    </section>
-
-    <!-- TEACHER STORIES -->
-    <section id="stories" data-aos="fade-up">
-      <h2 class="text-3xl font-bold mb-6">Teacher Stories</h2>
-
-      <!-- Post composer -->
-      <div class="bg-white p-6 rounded-2xl shadow mb-8" id="composer">
-        <textarea id="storyInput" rows="3" placeholder="How did you use AI this week?" class="w-full p-3 border rounded-lg resize-none"></textarea>
-        <input id="tagInput" type="text" placeholder="Tags (comma-separated)" class="w-full p-3 mt-3 border rounded-lg" />
-        <button id="postBtn" class="mt-4 bg-primary text-white px-6 py-2 rounded-lg hover:bg-indigo-700 transition">Post</button>
+    <!-- FLOATING TEACHER STORIES -->
+    <div id="storiesPanel" class="hidden md:flex fixed top-1/4 right-4 flex-col w-72 space-y-4 z-30">
+      <h2 class="text-xl font-bold">Teacher Stories</h2>
+      <div id="feed" class="space-y-4 overflow-y-auto max-h-[60vh]"></div>
+      <div class="bg-white p-4 rounded-2xl shadow">
+        <input id="nameInput" type="text" placeholder="Your name" class="w-full p-2 border rounded-lg mb-2" />
+        <textarea id="storyInput" rows="2" placeholder="How did you use AI this week?" class="w-full p-2 border rounded-lg mb-2 resize-none"></textarea>
+        <input id="tagInput" type="text" placeholder="(Optional) Tags (comma‑separated)" class="w-full p-2 border rounded-lg mb-2" />
+        <button id="postBtn" class="w-full bg-primary text-white py-2 rounded-lg hover:bg-indigo-700 transition">Post</button>
       </div>
+    </div>
 
-      <!-- Feed -->
-      <div id="feed" class="space-y-6"></div>
+    <!-- SPACER BEFORE DROP-IN -->
+    <div class="h-32"></div>
+
+    <!-- DROP-IN SECTION -->
+    <section id="dropin" data-aos="fade-up">
+      <h2 class="text-3xl font-bold mb-6">Book a Drop‑In Session</h2>
+      <iframe src="https://calendly.com/aaronbevan-iew/ai-meeting?hide_gdpr_banner=1" class="w-full h-[600px] border-0 rounded-2xl shadow-lg"></iframe>
     </section>
   </main>
 
   <!-- FOOTER -->
   <footer class="py-8 bg-gray-100 text-center text-sm" data-aos="fade-up">
-    <p>&copy; <span id="year"></span> School AI Team · Built with ❤ & GPT-4o</p>
+    <p>&copy; <span id="year"></span> Buffalo AI Hub · Built with ❤ & GPT-4o</p>
   </footer>
 
-  <!-- Scripts -->
+  <!-- SCRIPTS -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
   <script>
-    /* ───────────────── AOS ───────────────── */
     AOS.init({ duration: 800 });
-
-    /* ───────────────── Footer Year ───────────────── */
+    // Footer year
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    /* ───────────────── Mobile Nav ───────────────── */
+    // Email modal logic
+    let emailPrompted = localStorage.getItem('emailPrompted');
+    let lastScroll = 0;
+    window.addEventListener('scroll', () => {
+      const currentScroll = window.pageYOffset;
+      if (!emailPrompted && currentScroll > lastScroll && currentScroll > 100) {
+        document.getElementById('emailModal').style.display = 'flex';
+        localStorage.setItem('emailPrompted', 'true');
+        emailPrompted = true;
+      }
+      lastScroll = currentScroll;
+    });
+    document.getElementById('noThanksBtn').addEventListener('click', () => {
+      document.getElementById('emailModal').style.display = 'none';
+    });
+    document.getElementById('submitEmailBtn').addEventListener('click', () => {
+      const email = document.getElementById('emailInput').value;
+      if (email) {
+        // handle email submission here (e.g., send to server)
+      }
+      document.getElementById('emailModal').style.display = 'none';
+    });
+
+    // Mobile nav
     const navToggle = document.getElementById('navToggle');
     const navMenu   = document.getElementById('navMenu');
     navToggle.addEventListener('click', () => navMenu.classList.toggle('hidden'));
-    // Hide menu on link click & on scroll
-    navMenu.querySelectorAll('a').forEach(link => link.addEventListener('click', () => navMenu.classList.add('hidden')));
-    window.addEventListener('scroll', () => navMenu.classList.add('hidden'));
 
-    /* ───────────────── Dark Mode ───────────────── */
-    const themeBtn  = document.getElementById('toggleTheme');
+    // Dark mode
+    const root = document.documentElement;
+    const themeBtn = document.getElementById('toggleTheme');
     const themeIcon = document.getElementById('themeIcon');
-    const root      = document.documentElement;
-    function setTheme(dark) {
+    function applyTheme(dark) {
       dark ? root.classList.add('dark') : root.classList.remove('dark');
       themeIcon.textContent = dark ? '☀️' : '🌙';
       localStorage.setItem('aiHubTheme', dark ? 'dark' : 'light');
     }
-    themeBtn.addEventListener('click', () => setTheme(!root.classList.contains('dark')));
-    setTheme(localStorage.getItem('aiHubTheme') === 'dark');
+    themeBtn.addEventListener('click', () => applyTheme(!root.classList.contains('dark')));
+    applyTheme(localStorage.getItem('aiHubTheme') === 'dark');
 
-    /* ───────────────── Use-Cases ───────────────── */
+    // Load use cases
     async function loadCases() {
       try {
         const res = await fetch('usecases.json');
         const cases = await res.json();
-        const grid  = document.getElementById('caseGrid');
-        cases.forEach(c => grid.insertAdjacentHTML('beforeend', caseCard(c)));
-      } catch (err) { console.error('Missing usecases.json', err); }
-    }
-    function caseCard(c) {
-      return `<article class="bg-white p-6 rounded-2xl shadow hover:shadow-lg transition" data-keywords="${c.keywords.join(' ')}">
-        <h3 class="font-semibold text-primary mb-1">${c.title}</h3>
-        <p>${c.description}</p>
-      </article>`;
+        const grid = document.getElementById('caseGrid');
+        cases.forEach(c => {
+          const card = document.createElement('article');
+          card.className = 'bg-white p-6 rounded-2xl shadow hover:shadow-lg transition';
+          card.setAttribute('data-keywords', c.keywords.join(' '));
+          card.innerHTML = `<h3 class="font-semibold text-primary mb-1">${c.title}</h3><p>${c.description}</p>`;
+          grid.appendChild(card);
+        });
+      } catch(e) { console.error('usecases.json missing', e); }
     }
     document.getElementById('caseFilter').addEventListener('input', e => {
       const term = e.target.value.toLowerCase();
@@ -171,54 +199,41 @@
       });
     });
 
-    /* ───────────────── Stories ───────────────── */
-    async function loadStories() {
-      try {
-        const res = await fetch('stories.json');
-        const stories = await res.json();
-        const local  = JSON.parse(localStorage.getItem('userStories') || '[]');
-        renderStories([...stories, ...local]);
-      } catch (err) { console.error('Missing stories.json', err); renderStories(JSON.parse(localStorage.getItem('userStories') || '[]')); }
-    }
+    // Teacher stories
     function renderStories(arr) {
       const feed = document.getElementById('feed');
       feed.innerHTML = '';
-      arr.sort((a,b) => new Date(b.date) - new Date(a.date));
-      arr.forEach(s => feed.insertAdjacentHTML('beforeend', storyCard(s)));
+      arr.sort((a, b) => new Date(b.date) - new Date(a.date));
+      arr.forEach(s => {
+        const art = document.createElement('article');
+        art.className = 'bg-white p-4 rounded-lg shadow';
+        const tags = s.tags.map(t => `<span class="text-xs bg-gray-200 rounded px-2 py-0.5">#${t}</span>`).join(' ');
+        art.innerHTML = `<header class="flex items-center gap-2 mb-2"><span class="font-semibold">@${s.author}</span><span class="text-xs text-gray-500">${new Date(s.date).toLocaleDateString()}</span></header><p class="mb-2">${s.content}</p><div class="flex gap-1 flex-wrap">${tags}</div>`;
+        feed.appendChild(art);
+      });
     }
-    function storyCard(s) {
-      const tagHtml = s.tags ? s.tags.map(t => `<span class="text-xs bg-gray-200 rounded px-2 py-0.5">#${t}</span>`).join(' ') : '';
-      return `<article class="bg-white p-6 rounded-2xl shadow hover:shadow-lg transition">
-        <header class="flex items-center gap-2 mb-2"><span class="font-semibold">@${s.author || 'Anon'}</span><span class="text-xs text-gray-500">${new Date(s.date).toLocaleDateString()}</span></header>
-        <p class="mb-2">${s.content}</p>
-        <div class="flex gap-2 flex-wrap">${tagHtml}</div>
-      </article>`;
+    async function loadStories() {
+      try {
+        const res = await fetch('stories.json');
+        const server = await res.json();
+        const local = JSON.parse(localStorage.getItem('userStories') || '[]');
+        renderStories([...server, ...local]);
+      } catch(e) { renderStories(JSON.parse(localStorage.getItem('userStories') || '[]')); }
     }
-
-    // Post new story
     document.getElementById('postBtn').addEventListener('click', () => {
+      const author = document.getElementById('nameInput').value.trim() || 'Anon';
       const content = document.getElementById('storyInput').value.trim();
-      if (!content) return alert('Tell us your AI win first!');
-      const tagsRaw = document.getElementById('tagInput').value.trim();
-      const story = {
-        author: 'You',
-        date: new Date().toISOString(),
-        content,
-        tags: tagsRaw ? tagsRaw.split(',').map(t => t.trim()).filter(Boolean) : []
-      };
+      if (!content) return alert('Share your AI story first!');
+      const tags = document.getElementById('tagInput').value.split(',').map(t => t.trim()).filter(Boolean);
+      const story = { author, content, tags, date: new Date().toISOString() };
       const stored = JSON.parse(localStorage.getItem('userStories') || '[]');
-      stored.push(story);
+      stored.unshift(story);
       localStorage.setItem('userStories', JSON.stringify(stored));
       document.getElementById('storyInput').value = '';
       document.getElementById('tagInput').value = '';
-      renderStories([...stored]);
+      renderStories(stored);
     });
-
-    /* ───────────────── Init ───────────────── */
-    document.addEventListener('DOMContentLoaded', () => {
-      loadCases();
-      loadStories();
-    });
+    document.addEventListener('DOMContentLoaded', () => { loadCases(); loadStories(); });
   </script>
 </body>
 </html>
